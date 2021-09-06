@@ -22,7 +22,6 @@ const FILES_TO_CACHE = [
 // Respond with cached resources
 self.addEventListener('fetch', function (e) {
 
-
     if (e.request.url.includes('/api')) {
         e.respondWith(
         caches.open(DATA_CACHE_NAME)
@@ -42,7 +41,6 @@ self.addEventListener('fetch', function (e) {
             return; 
     }
     e.respondWith(
-
         fetch(e.request).catch(err => {
             return caches.match(e.request).then((response)=> {
                 if (response) {
@@ -76,7 +74,6 @@ self.addEventListener('activate', function (e) {
             })
             // add current cache name to keeplist
             cacheKeeplist.push(CACHE_NAME);
-
             return Promise.all(keyList.map(function (key, i) {
                 if (cacheKeeplist.indexOf(key) === -1) {
                     console.log('deleting cache : ' + keyList[i]);

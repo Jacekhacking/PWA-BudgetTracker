@@ -55,8 +55,9 @@ function uploadTransaction(){
                     throw new Error(serverResponse);
                 }
                 const transaction = db.transaction(['failed_transaction'], 'readwrite');
-                const budgetObjectStore = transaction.objectStore('failed_transaction');
 
+                const budgetObjectStore = transaction.objectStore('failed_transaction');
+                
                 //clear all items in store
                 budgetObjectStore.clear();
             })
